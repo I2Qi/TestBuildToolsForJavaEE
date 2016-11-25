@@ -18,6 +18,10 @@ repositories {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0.1'
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.24.1'
+//    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.24.1'
+}
+
+war {
+   rootSpec.exclude ("**/*.jar")
 }
 
