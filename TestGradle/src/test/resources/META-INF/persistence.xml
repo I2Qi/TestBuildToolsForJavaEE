@@ -1,0 +1,21 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+    version="2.1">
+
+    <persistence-unit name="sample" transaction-type="RESOURCE_LOCAL">
+    <class>jp.i2qi.jersey.entity.Member</class>
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="javax.persistence.jdbc.url"
+            value="jdbc:derby:.\db\sample;create=true" />
+<!--              value="jdbc:derby:C:\Users\E024040\Documents\projects\github\TestBuildToolsForJavaEE\TestGradle\db\sample;create=true" /> -->
+        <!--
+        <property name="javax.persistence.jdbc.user" value="I2Qi" />
+        <property name="javax.persistence.jdbc.password" value="I2Qi" />
+        -->
+    </properties>
+
+    </persistence-unit>
+</persistence>

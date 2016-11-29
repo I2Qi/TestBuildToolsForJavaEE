@@ -12,6 +12,7 @@ public class JerseySampleResource {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String hello(){
+
 		return "hogehoge";
 	}
 
