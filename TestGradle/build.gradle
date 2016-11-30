@@ -21,20 +21,42 @@ checkstyle {
     toolVersion '7.3'
 }
 
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.22.1'
-    compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.6.1-RC1'
-    compile group: 'org.apache.derby', name: 'derby', version: '10.13.1.1'
-//    compile group: 'org.apache.derby', name: 'derbyclient', version: '10.13.1.1'
-    compile group: 'junit', name: 'junit', version: '4.12'
-    compileOnly "org.projectlombok:lombok:1.16.10"
+
+    //‹¤’Ê
+    def jerseyCore = 'org.glassfish.jersey.core:jersey-server:2.21'
+    def jerseyContainer = 'org.glassfish.jersey.containers:jersey-container-servlet:2.21'
+    def eclipselink = 'org.eclipse.persistence:eclipselink:2.6.1-RC1'
+    def derby = 'org.apache.derby:derby:10.13.1.1'
+    def jta = 'javax.transaction:javax.transaction-api:1.2'
+    def hk2 = 'org.glassfish.hk2:hk2-maven:2.4.0-b31'
+    def cdi = 'javax.enterprise:cdi-api:1.2'
 
 
-}
+    compileOnly jerseyCore
+    compileOnly jerseyContainer 
+    compileOnly eclipselink
+    compileOnly derby
+    compileOnly jta
+    compileOnly hk2
+    compileOnly cdi
+    compileOnly 'org.projectlombok:lombok:1.16.10'
 
-war {
-   rootSpec.exclude ("**/*.jar")
+    testCompile jerseyCore
+    testCompile jerseyContainer
+    testCompile eclipselink
+    testCompile derby
+    testCompile jta
+    testCompile hk2
+    testCompile cdi
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-jdk-http:2.21'
+
+
+
+
 }
 
 tasks.withType(FindBugs) {

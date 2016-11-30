@@ -4,13 +4,14 @@
                         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
     version="2.1">
 
-    <persistence-unit name="sample" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="sample" transaction-type="JTA">
+    <jta-data-source>jdbc/__default</jta-data-source> <!-- Glassfish Default Datasource -->
     <class>jp.i2qi.jersey.entity.Member</class>
-    <properties>
+ <!--     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
         <property name="javax.persistence.jdbc.url"
-            value="jdbc:derby:.\db\sample;create=true" />
+            value="jdbc:derby://localhost:1527/C:\derbydb\sample;create=true" />
     </properties>
-
+-->
     </persistence-unit>
 </persistence>
