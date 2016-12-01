@@ -3,6 +3,7 @@ package jp.i2qi.jersey.service;
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import jp.i2qi.jersey.entity.Member;
 
@@ -13,6 +14,7 @@ public class MemberServiceImpl implements MemberService{
 	@PersistenceContext(unitName="sample")
 	EntityManager entityManager;
 
+	@Transactional
 	public void register( Integer id, String name){
 
 		Member mem = new Member();
@@ -24,6 +26,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	@Transactional
 	public void update(Integer id, String name){
 
 		Member mem = entityManager.find(Member.class, id);

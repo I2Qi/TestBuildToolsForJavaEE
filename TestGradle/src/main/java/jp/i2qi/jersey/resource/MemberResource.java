@@ -2,7 +2,11 @@ package jp.i2qi.jersey.resource;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -25,15 +29,26 @@ public class MemberResource {
             @QueryParam("id") Integer id )throws Exception{
 
 
-        try{
         Member mem = this.memberService.get(id);
 
         return mem.getName();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return "";
+    }
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void create(
+            @FormParam("id") Integer id, @FormParam("name") String name)throws Exception{
+
+
+        this.memberService.register(id, name);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void update(
+            @FormParam("id") Integer id, @FormParam("name") String name)throws Exception{
+
+        this.memberService.update(id, name);
     }
 }
